@@ -17,3 +17,12 @@ test("The display does not care about how balls and strikes work in baseball",()
     expect(ballsElement).toBeInTheDocument();
     expect (strikesElement).toBeInTheDocument();
 });
+
+test("props work for passing in state to display", () => {
+    const balls = 2, strikes = 2;
+    render (<Display strikes = {strikes} balls = {balls} />);
+    const strikesElement = screen.getByText(new RegExp(`Strikes: ${strikes}`, 'i'));
+    const ballsElement = screen.getByText(new RegExp(`Balls: ${balls}`, 'i'));
+    expect(ballsElement).toBeInTheDocument();
+    expect(strikesElement).toBeInTheDocument();
+  });
